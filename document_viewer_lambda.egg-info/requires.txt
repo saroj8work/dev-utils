@@ -1,0 +1,5 @@
+bleach<7,>=6.2
+beautifulsoup4<5,>=4.13
+fastapi<1,>=0.115
+mangum<1,>=0.19
+Markdown<4,>=3.8

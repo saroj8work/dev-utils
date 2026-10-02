@@ -13,7 +13,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: .
-      Handler: lambda_function.handler
+      Handler: app.lambda_handler
       Environment:
         Variables:
           ALLOWED_ORIGIN: '*'
@@ -27,6 +27,36 @@ Resources:
           Type: Api
           Properties:
             Path: /documents/process
+            Method: options
+        DecodeJwt:
+          Type: Api
+          Properties:
+            Path: /utilities/jwt/decode
+            Method: post
+        DecodeJwtPreflight:
+          Type: Api
+          Properties:
+            Path: /utilities/jwt/decode
+            Method: options
+        EncodeUrlBase64:
+          Type: Api
+          Properties:
+            Path: /utilities/base64/url/encode
+            Method: post
+        EncodeUrlBase64Preflight:
+          Type: Api
+          Properties:
+            Path: /utilities/base64/url/encode
+            Method: options
+        DecodeUrlBase64:
+          Type: Api
+          Properties:
+            Path: /utilities/base64/url/decode
+            Method: post
+        DecodeUrlBase64Preflight:
+          Type: Api
+          Properties:
+            Path: /utilities/base64/url/decode
             Method: options
     Metadata:
       BuildMethod: python3.12

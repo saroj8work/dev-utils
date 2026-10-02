@@ -1,0 +1,10 @@
+Metadata-Version: 2.4
+Name: document-viewer-lambda
+Version: 0.1.0
+Summary: AWS Lambda API for formatting and previewing text documents
+Requires-Python: >=3.12
+Requires-Dist: bleach<7,>=6.2
+Requires-Dist: beautifulsoup4<5,>=4.13
+Requires-Dist: fastapi<1,>=0.115
+Requires-Dist: mangum<1,>=0.19
+Requires-Dist: Markdown<4,>=3.8
