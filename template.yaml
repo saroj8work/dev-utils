@@ -1,0 +1,32 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Document formatting and preview API
+
+Globals:
+  Function:
+    Runtime: python3.12
+    Timeout: 10
+    MemorySize: 256
+
+Resources:
+  DocumentProcessorFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: .
+      Handler: lambda_function.handler
+      Environment:
+        Variables:
+          ALLOWED_ORIGIN: '*'
+      Events:
+        ProcessDocument:
+          Type: Api
+          Properties:
+            Path: /documents/process
+            Method: post
+        Preflight:
+          Type: Api
+          Properties:
+            Path: /documents/process
+            Method: options
+    Metadata:
+      BuildMethod: python3.12
